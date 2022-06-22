@@ -1,0 +1,20 @@
+import { Request, Response } from "express"
+import { StudentDatabase } from "../data/StudentDatabase"
+import { Estudante } from "../model/Estudante"
+
+export default async function criarTurma(req: Request, res: Response): Promise<void> {
+    try {
+        const { nome, email, data_nasc, turma_id, hobby } = req.body
+        const id = Date.now().toString()
+
+        const estudante = new Estudante(id,nome, email, data_nasc, turma_id, hobby)
+
+        const estudanteDB = new StudentDatabase()
+
+        await estudanteDB.criarEstudante(estudante)
+
+        res.status(201).send("Estudante criado com sucesso!")
+    } catch (error: any) {
+        res.status(500).send(error.message)
+    }
+}
