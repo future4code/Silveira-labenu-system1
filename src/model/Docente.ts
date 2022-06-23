@@ -5,7 +5,7 @@ type Especialidade = {
 }
 
 export class Docente extends Usuario {
-    private especialidade:Especialidade[] = []
+    private especialidade:Especialidade[]
 
     constructor(
         id: string,
@@ -13,8 +13,10 @@ export class Docente extends Usuario {
         email: string,
         data_nasc: string,
         turma_id: string,
+        especialidade: Especialidade[]
     ) {
         super(id, name, email, data_nasc, turma_id)
+        this.especialidade = especialidade
     }
     public getEspecialidade(): Especialidade[] {
         return this.especialidade

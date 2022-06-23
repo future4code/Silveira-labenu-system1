@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { TurmaDatabase } from "../data/TurmaDatabase"
 
 
-export default async function criarTurma(req: Request, res: Response): Promise<void> {
+export default async function buscarTurmas(req: Request, res: Response): Promise<void> {
     try {
         const turma = new TurmaDatabase()
         res.status(201).send(await turma.pegarTurmas())

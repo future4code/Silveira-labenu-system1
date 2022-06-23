@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { StudentDatabase } from "../data/StudentDatabase"
 import { Estudante } from "../model/Estudante"
 
-export default async function criarTurma(req: Request, res: Response): Promise<void> {
+export default async function criarEstudante(req: Request, res: Response): Promise<void> {
     try {
         const { nome, email, data_nasc, turma_id, hobby } = req.body
         const id = Date.now().toString()

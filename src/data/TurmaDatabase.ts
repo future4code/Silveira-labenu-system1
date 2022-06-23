@@ -36,4 +36,29 @@ export class TurmaDatabase extends BaseDatabase {
             throw new Error("Error inesperado")
         }
     }
+
+    public async buscaEstudanteTurma(turma_id: string) {
+        try {
+            const result = await BaseDatabase.connection("Estudante")
+                .select("*")
+                .from("Estudante")
+                .where("turma_id",turma_id)
+            return result
+        } catch (error: any) {
+            console.log(error.sqlMessage || error.message)
+            throw new Error("Error inesperado")
+        }
+    }
+    public async buscaDocenteTurma(turma_id: string) {
+        try {
+            const result = await BaseDatabase.connection("Docente")
+                .select("*")
+                .from("Docente")
+                .where("turma_id",turma_id)
+            return result
+        } catch (error: any) {
+            console.log(error.sqlMessage || error.message)
+            throw new Error("Error inesperado")
+        }
+    }
 }
