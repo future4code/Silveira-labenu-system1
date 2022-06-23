@@ -1,6 +1,7 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { Request, Response } from "express"
-import { Estudante } from "../model/Estudante";
+import { Estudante, Hobby } from "../model/Estudante";
+
 
 const convertDate = (date:string):string =>{
     const arrDate = date.split("/")
@@ -47,6 +48,14 @@ export class StudentDatabase extends BaseDatabase {
             .where("id", id)
         } catch (error: any) {
             throw new Error("Error inesperado")
+        }
+    }
+
+    public async addHobby(hobby: Hobby[]) {
+        try {
+            
+        } catch (error:any) {
+            
         }
     }
 }

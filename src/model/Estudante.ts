@@ -1,6 +1,6 @@
 import { Usuario } from './Usuario'
 
-type Hobby ={
+export type Hobby ={
     id?:string,
     nome: string
 }

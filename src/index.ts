@@ -14,6 +14,7 @@ app.put("/mudarmodulo/:id", mudarModulo)
 app.post("/criarestudante", criarEstudante)
 app.get("/buscaestudante", buscarEstudantes)
 app.put("/mudarestudanteturma/:id", mudarEstudanteTurma)
+app.post("/relacionarhobbyestudante", )
 
 app.post("/criardocente", )
 app.get("/buscardocentes", )
