@@ -29,3 +29,5 @@ Turma,
 Docente, 
 Docente_Especialidade e
 Especialidade
+
+Participante deste projeto: Alessandra Sandeski Marmiroli, Alex Maiolino Kalawatis e Maria Eduarda dos Reis Lopes. 
