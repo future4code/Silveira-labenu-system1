@@ -5,6 +5,9 @@ export default async function buscarEstudantes(req: Request, res: Response): Pro
     try {
         const hobby = req.query.hobby as string
         const turma = new StudentDatabase()
+        if(!hobby || ! turma){
+            throw new Error("Por gentileza verifique o preenchimento dos campos.") 
+       }
         const result = await turma.estudantesMesmoHobby(hobby) 
         res.status(201).send(result)   
     } catch (error: any) {

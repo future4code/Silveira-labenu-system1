@@ -3,8 +3,7 @@ import { StudentDatabase } from "../data/StudentDatabase"
 
 export default async function buscarEstudanteSigno(req: Request, res: Response): Promise<void> {
     try {
-
-        const signo = req.params.data_nasc as string
+        const signo = req.params.signo as string
         const turma = new StudentDatabase()
         const result = await turma.estudantePorSigno(signo)
         
