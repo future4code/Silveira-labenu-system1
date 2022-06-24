@@ -22,3 +22,6 @@ export class Usuario {
         return this.turma_id
     }
 }
+
+const signos = ["Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"]
+

@@ -7,6 +7,9 @@ const convertDate = (date: string): string => {
     const arrDate = date.split("/")
     return `${arrDate[2]}-${arrDate[1]}-${arrDate[0]}`
 }
+// const getDayMonth = (date:string): string =>{
+    
+// }
 
 export class StudentDatabase extends BaseDatabase {
     public async criarEstudante(estudante: Estudante) {
@@ -47,7 +50,6 @@ export class StudentDatabase extends BaseDatabase {
                     })
             }
         } catch (error: any) {
-            console.log(error.sqlMessage)
             throw new Error("Error inesperado")
         }
     }
@@ -62,7 +64,6 @@ export class StudentDatabase extends BaseDatabase {
                 .where("Estudante.nome", "LIKE", nome)
             return result
         } catch (error: any) {
-            console.log(error.sqlMessage)
             throw new Error("Error inesperado")
         }
     }
@@ -89,7 +90,41 @@ export class StudentDatabase extends BaseDatabase {
                 .where("Hobby.nome", "LIKE", hobby)
             return result
         } catch (error: any) {
-            console.log(error.sqlMessage || error.messag)
+            throw new Error("Error inesperado")
+        }
+    }
+
+    public async estudantePorSigno(data_nasc: string) {
+        try {
+            const signos = ["Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"]
+
+            const result = await BaseDatabase.connection("Estudante")
+                .select("*")
+                .where("data_nasc", data_nasc)
+            // return result
+
+            const filtrando = result.filter((estudante) => {
+                while(data_nasc) {
+            
+                    if (estudante.data_nasc === "1960-03-22") {
+                        return signos[0]
+                    } else if (estudante.data_nasc === "1960-05-05") {
+                        return signos[1]
+                    } else if (estudante.data_nasc === "1960-05-04") {
+                        return signos[2]
+                    }
+                }
+            })
+            return filtrando
+            // const data = data_nasc
+            // const filtroSignos = result.filter((estudante) => {
+            //     if (estudante.data_nasc === data) {
+            //         return estudante
+            //     }
+            // })
+            // return filtroSignos
+        } catch (error: any) {
+            console.log(error.sqlMessage || error.message)
             throw new Error("Error inesperado")
         }
     }
