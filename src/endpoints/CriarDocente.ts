@@ -7,6 +7,9 @@ export default async function criarDocente(req: Request, res: Response): Promise
     try {
         const { nome, email, data_nasc, turma_id, especialidade } = req.body
         const id = Date.now().toString()
+        if(!nome || !email || !data_nasc || !turma_id || !especialidade){
+            throw new Error("Por gentileza verifique o preenchimento dos campos.") 
+       }
 
         const docente = new Docente(id, nome, email, data_nasc, turma_id, especialidade)
         const docenteDB = new DocenteDatabase()

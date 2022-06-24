@@ -6,6 +6,9 @@ export default async function criarEstudante(req: Request, res: Response): Promi
     try {
         const { nome, email, data_nasc, turma_id, hobby } = req.body
         const id = Date.now().toString()
+        if(!nome || ! email || !data_nasc || !turma_id || !hobby){
+            throw new Error("Por gentileza verifique o preenchimento dos campos.") 
+       }
 
         const estudante = new Estudante(id,nome, email, data_nasc, turma_id, hobby)
 

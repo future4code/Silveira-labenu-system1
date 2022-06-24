@@ -14,6 +14,9 @@ export default async function buscarDocenteEspecialidade(req: Request, res: Resp
     try {
         const especialidade = req.query.especialidade as string
         const docente = new DocenteDatabase()
+        if(! especialidade|| ! docente){
+            throw new Error("Por gentileza verifique o preenchimento dos campos.") 
+       }
         const result = await docente.buscarDocentePorEspecialidade(especialidade)
         // const espec = result.map((e)=>{
         //     return e.especialidade

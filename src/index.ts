@@ -12,6 +12,7 @@ import mudarDocenteTurma from "./endpoints/MudarDocenteTurma"
 import buscaEstudanteDocente from "./endpoints/EstudanteDocente"
 import estudantesMesmoHobby from "./endpoints/BuscarEstudantesPorHobby"
 import buscarDocentePorEspecialidade from "./endpoints/BuscarDocentesPorEspecialidade"
+import buscarEstudanteSigno from "./endpoints/BuscarEstudanteSigno"
 
 app.post("/criarturma", criarTurma)
 app.get("/buscarturma", buscarTurmas)
@@ -28,3 +29,4 @@ app.put("/mudardocenteturma/:id", mudarDocenteTurma)
 app.get("/estudantedocente/:turma_id", buscaEstudanteDocente)
 app.get("/estudantemesmohobby", estudantesMesmoHobby)
 app.get("/buscardocenteespecialidade", buscarDocentePorEspecialidade)
+app.get("/buscarestudanteporsigno/:signo", buscarEstudanteSigno)

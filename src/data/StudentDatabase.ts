@@ -7,6 +7,9 @@ const convertDate = (date: string): string => {
     const arrDate = date.split("/")
     return `${arrDate[2]}-${arrDate[1]}-${arrDate[0]}`
 }
+// const getDayMonth = (date:string): string =>{
+
+// }
 
 export class StudentDatabase extends BaseDatabase {
     public async criarEstudante(estudante: Estudante) {
@@ -47,7 +50,6 @@ export class StudentDatabase extends BaseDatabase {
                     })
             }
         } catch (error: any) {
-            console.log(error.sqlMessage)
             throw new Error("Error inesperado")
         }
     }
@@ -62,7 +64,6 @@ export class StudentDatabase extends BaseDatabase {
                 .where("Estudante.nome", "LIKE", nome)
             return result
         } catch (error: any) {
-            console.log(error.sqlMessage)
             throw new Error("Error inesperado")
         }
     }
@@ -89,8 +90,106 @@ export class StudentDatabase extends BaseDatabase {
                 .where("Hobby.nome", "LIKE", hobby)
             return result
         } catch (error: any) {
-            console.log(error.sqlMessage || error.messag)
+            throw new Error("Error inesperado")
+        }
+    }
+
+    public async estudantePorSigno(signo: string) {
+        try {
+            
+            const signos = [{
+                nome: "Áries",
+                dataInicio: "21-03",
+                dataFim: "20-04"
+            },
+            {
+                nome: "Touro",
+                dataInicio: new Date("04-21").getTime(),
+                dataFim: new Date("05-20").getTime()
+            },
+            {
+                nome: "Gêmeos",
+                dataInicio: "05-21",
+                dataFim: "06-20"
+            },
+            {
+                nome: "Câncer",
+                dataInicio: "21-06",
+                dataFim: "22-06"
+            },
+            {
+                nome: "Leão",
+                dataInicio: "23-07",
+                dataFim: "22-06"
+            },
+            {
+                nome: "Virgem",
+                dataInicio: "23-08",
+                dataFim: "22-09"
+            },
+            {
+                nome: "Libra",
+                dataInicio: "23-09",
+                dataFim: "22-10"
+            },
+            {
+                nome: "Escorpião",
+                dataInicio: "23-10",
+                dataFim: "21-11"
+            },
+            {
+                nome: "Sagitário",
+                dataInicio: "22-11",
+                dataFim: "21-12"
+            },
+            {
+                nome: "Capricórnio",
+                dataInicio: "22-12",
+                dataFim: "20-01"
+            },
+            {
+                nome: "Aquário",
+                dataInicio: "21-01",
+                dataFim: new Date("18-02").getTime()
+            },
+            {
+                nome: "Peixes",
+                dataInicio: new Date("19-02").getTime(),
+                dataFim: new Date("20-03").getTime()
+            }
+            ]
+
+            const estudantes = await BaseDatabase.connection("Estudante")
+    
+            const result = estudantes && estudantes.filter((estudante) => {
+                if (signo === "Touro") {
+                    const data = new Date(estudante.data_nasc)
+                    const dia = data.getDay()
+                    const mes = data.getMonth()
+                    const novaData = `${mes}-${dia}`
+                    console.log(novaData)
+                    if (new Date(novaData).getTime() >= new Date("04-21").getTime() || new Date(novaData).getTime() <= new Date("05-20").getTime()) {
+                        return estudante
+                    }
+                }
+            })
+            return result
+        } catch (error: any) {
+            console.log(error.sqlMessage || error.message)
             throw new Error("Error inesperado")
         }
     }
 }
+
+   // while (estudante.lenght) {
+
+                //     if (estudante.data_nasc === "1960-03-22") {
+                //         return `Signos de Áries: ${estudante}`
+                //     }
+                //     else if (estudante.data_nasc === "1960-05-05") {
+                //         return `Signos de Touro: ${estudante}`
+                //     }
+                //     else if (estudante.data_nasc === "1960-06-04") {
+                //         return `Signos de Gêmeos: ${estudante}`
+                //     }
+                // }

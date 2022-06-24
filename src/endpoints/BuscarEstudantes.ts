@@ -15,6 +15,9 @@ export default async function buscarEstudantes(req: Request, res: Response): Pro
     try {
         const nome = req.query.nome as string
         const turma = new StudentDatabase()
+        if(!nome || !turma){
+            throw new Error("Por gentileza verifique o preenchimento dos campos.") 
+       }
         const result = await turma.pegarEstudantes(nome)
         const hobby = result.map((r) => {
             return r.hobby

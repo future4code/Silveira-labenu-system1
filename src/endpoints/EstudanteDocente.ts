@@ -6,7 +6,9 @@ export default async function buscaEstudanteDocente(req: Request, res: Response)
     try {
         const turmaEsDo = req.params.turma_id
         const estudanteDocente = new TurmaDatabase()
-        
+        if(!turmaEsDo){
+            throw new Error("Verifique o id da turma.")
+        }
         const result = await estudanteDocente.buscaEstudanteTurma(turmaEsDo) 
         const result2 = await estudanteDocente.buscaDocenteTurma(turmaEsDo)
 
