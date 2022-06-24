@@ -1,37 +1,31 @@
 DOCUMENTAÇÃO DA API: https://documenter.getpostman.com/view/20352466/UzBqq6Ji
 
 
+LabenuSystem
 
-## LabenuSystem:
+O projeto LabenuSystem foi ispirado em uma instituição de Ensino representando o básico do Backend da organização Labenu. 
+Ele foi dividivo em: 
 
-Você estuda na Labenu_ há tanto tempo que já parecem anos, não é? Então, hoje, vamos pedir para criar um sistema que represente o básico da nossa organização. 
+1. Estudantes
+Neste módulo cada estudante contém alguns dados que o identifica: id, nome, e-mail, data de nascimento e hobbies. Foi possível fazer os endpoints de: 
+Criar estudante, Buscar estudante através do nome; Mudar estudante de turma.
 
-Ele deve possuir, ao menos, as 3 entidades importantes:
+2. Docente 
+Representa os professores da instituição, sendo que esses professores devem conter: id, nome, email, data de nascimento e suas especialidades: React, Redux,
+ CSS, Testes, Typescript, Programação Orientada a Objetos e Backend. Foi possível fazer os endpoints de:Criar Docente, Buscar todas as pessoas docentes, 
+mudar docente de turma.
 
-1. Estudantes 
+3. Turma 
+As turmas são formadas por suas respectivas características: id, nome, data de início, data de término, lista de professores responsáveis, 
+uma lista de alunos e módulo atual em que a turma está. 
+Foi possível fazer os endpoints de: Criar turma, Buscar turmas ativas e mudar turma de módulo. 
+Utilizamos a plataforma do Postman para bater os endpoints e buscar criar ou visualizar as informações que contemplava nosso código. 
 
-    Representa estudantes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e os principais hobbies dele. 
-
-2. Docente
-
-    Representa docentes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e todas as especialidades dele. Há 7 especialidades: React, Redux, CSS, Testes, Typescript, Programação Orientada a Objetos e Backend
-
-3. Turma
-
-    Toda turma é composta das seguintes características: id, nome, data de início, data de término, lista de professores responsáveis, uma lista de alunos e módulo atual em que a turma está.
-
-    O módulo pode assumir os valores de 1 a 7 ou `undefined`, indicando que as aulas dessa turma ainda não começaram. Para esse exercício, vamos considerar que existam dois tipos de turma: integral ou noturna. Há uma restrição para o nome das turmas noturnas: tem que terminar com `-na-night`.
-
-As funcionalidades básicas são:
-
-→ Criar estudante;
-
-→ Criar docente;
-
-→ Criar turma;
-
-→ Adicionar estudante na turma;
-
-→ Adicionar docente na turma;
-
-→ Pegar a idade de algum estudante a partir do id
+Criamos nossas 07 tabelas todas no MySql que nos fornece todas as informações bases para projetar nosso LabenuSystem: 
+Tabela de Estudante,
+Estudante_Hobby,
+Hobby,
+Turma,
+Docente, 
+Docente_Especialidade e
+Especialidade
